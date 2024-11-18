@@ -38,9 +38,13 @@ function pdf_link(path) {
         .then(blob => {
             const reader = new FileReader();
             reader.onload = () => {
-                open_pdf(to_byte_array(decrypt_pdf(
-                    reader.result,
-                    prompt('Enter Password'))));
+                try {
+                    open_pdf(to_byte_array(decrypt_pdf(
+                        reader.result,
+                        prompt('Enter Password'))));
+                } catch (e) {
+                    alert('Invalid password or corrupted document.');
+                }
             };
             reader.readAsText(blob);
         });
