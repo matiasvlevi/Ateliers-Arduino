@@ -1,17 +1,20 @@
 ## Francais
 
 
-### Électronique sans Programmation
-
-[Capteurs de lumière](./fr/photoresistance/laboratoire.pdf)
 
 ### Arduino & Programmation Embarquée
 
-[Clavier à notes](./fr/clavier-a-notes/laboratoire.pdf)
+[Clavier à notes](./fr/clavier-a-notes/laboratoire.enc)
 
-[Introduction au Moteurs Servo](./fr/servo/intro.pdf)
+[Introduction au Moteurs Servo](./fr/servo/intro.enc)
 
 <br/>
+
+### Électronique sans Programmation
+
+[Capteurs de lumière](./fr/photoresistance/laboratoire.enc)
+
+<br/> <br/>
 
 ## English
 
@@ -21,6 +24,6 @@
 
 [Introduction to Analog Input and Output](./en/general/analogio.pdf)
 
-[Introduction to Servo Motors](./en/servo/intro.pdf)
+[Introduction to Servo Motors](./en/servo/intro.enc)
 
 [Photosensitive Servo Motor](./en/servo/photosensitive.pdf)

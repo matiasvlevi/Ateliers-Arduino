@@ -1,0 +1,25 @@
+<!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+{% include head-custom-google-analytics.html %}
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}" -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+<script src="{{ '/assets/js/decrypt-pdf.js' | relative_url }}"></script>
+<script>
+    window.onload = function () {
+        document.querySelectorAll('a').forEach(link => {
+            const href = link.href;
+            if (href.endsWith('.enc')) {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    pdf_link(href);
+                });
+            }
+        });
+    }
+</script>
+
+<!-- end custom head snippets -->
