@@ -5,4 +5,4 @@ _site
 # Hide document keys
 *.key.sh
 **/*.pdf
-**/passwords.csv
+**/admin.csv
