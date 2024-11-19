@@ -27,7 +27,8 @@
 [Servomoteurs (fr)](./docs/intro_servo/laboratoire_fr.enc) | 
 [Servo motors (en)](./docs/intro_servo/laboratoire_en.enc) 
 
-
+[Écran LCD I2C (fr)](./docs/LCD_I2C/laboratoire_fr.enc) |
+[I2C LCD Screen (en)](./docs/LCD_I2C/laboratoire_en.enc)
 
 <br/>
 
