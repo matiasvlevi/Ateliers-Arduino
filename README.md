@@ -12,7 +12,7 @@
 ## Ateliers Arduino
 
 [Clavier à Notes](./docs/clavier_musical/laboratoire.enc) | 
-[Solution](./fr/clavier_musical/solution.enc)
+[Solution](./docs/clavier_musical/solution.enc)
 
 [Entrée de Stationnement](./docs/Entrée_de_stationnement/laboratoire.enc) |
 [Solution](./docs/Entrée_de_stationnement/solution.enc)
