@@ -1,29 +1,28 @@
-## Francais
 
 
+---
 
-### Arduino & Programmation Embarquée
+## Ateliers Électronique
 
-[Clavier à notes](./fr/clavier-a-notes/laboratoire.enc)
+[Capteurs de lumière](./docs/Détecteur_de_lumière/laboratoire.enc)
 
-[Introduction au Moteurs Servo](./fr/servo/intro.enc)
+
+## Ateliers Arduino
+
+[Clavier à Notes](./docs/clavier_musical/laboratoire.enc) | 
+[Solution](./fr/clavier_musical/solution.enc)
+
+[Entrée de Stationnement](./docs/Entrée_de_stationnement/laboratoire.enc) |
+[Solution](./docs/Entrée_de_stationnement/solution.enc)
 
 <br/>
 
-### Électronique sans Programmation
+## Exercices Arduino
 
-[Capteurs de lumière](./fr/photoresistance/laboratoire.enc)
+[Intro aux Servomoteurs (fr)](./docs/intro_servo/laboratoire_fr.enc) | 
+[Intro to Servo motors (en)](./docs/intro_servo/laboratoire_en.enc) 
 
-<br/> <br/>
+<br/>
 
-## English
 
-### Arduino & Embedded Programming
-
-[Introduction to Digital Input and Output](./en/general/digitalio.pdf)
-
-[Introduction to Analog Input and Output](./en/general/analogio.pdf)
-
-[Introduction to Servo Motors](./en/servo/intro.enc)
-
-[Photosensitive Servo Motor](./en/servo/photosensitive.pdf)
+<br/> 

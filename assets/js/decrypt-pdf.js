@@ -1,51 +1,86 @@
-function decrypt_pdf(encryptedPdf, password) {
-    const decrypted = CryptoJS.AES.decrypt(encryptedPdf, password);
+async function derive_key_and_iv(password, salt, iterations = 10000, keyLength = 256) {
+    const encoder = new TextEncoder();
+    const passwordBytes = encoder.encode(password);
 
-    const base64Pdf = decrypted.toString(CryptoJS.enc.Utf8);
+    // Create a key material from the password using PBKDF2
+    const keyMaterial = await crypto.subtle.importKey(
+        "raw",
+        passwordBytes,
+        "PBKDF2",
+        false,
+        ["deriveBits"]
+    );
 
-    if (!base64Pdf) {
-        alert('Invalid password or corrupted PDF.');
-        return;
-    }
+    // Calculate total length needed for both key and IV
+    const totalLength = keyLength / 8 + 16; // keyLength in bytes, plus 16 bytes for IV
 
-    return base64Pdf;
+    const derivedBits = await crypto.subtle.deriveBits(
+        {
+            name: "PBKDF2",
+            salt: salt,
+            iterations: iterations,
+            hash: "SHA-256",
+        },
+        keyMaterial,
+        totalLength * 8
+    );
+
+    const derivedBytes = new Uint8Array(derivedBits);
+    return {
+        key: await crypto.subtle.importKey(
+            "raw",
+            derivedBytes.slice(0, keyLength / 8),
+            "AES-CBC",
+            false,
+            ["decrypt"]
+        ),
+        iv: derivedBytes.slice(keyLength / 8)
+    };
 }
 
-function to_byte_array(base64Pdf) {
+async function decrypt_b64(base64Data, password) {
+    const encryptedData = Uint8Array.from(atob(base64Data), (c) => c.charCodeAt(0));
 
-    // Convert base64 string to a binary buffer
-    const byteCharacters = atob(base64Pdf);
-    const byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
+    // Extract prefix and verify
+    const expectedPrefix = "Salted__";
+    const prefix = new TextDecoder().decode(encryptedData.slice(0, 8));
+    if (prefix !== expectedPrefix) {
+        throw new Error("Expected a 'Salted__' prefix, but it's missing.");
     }
-    const byteArray = new Uint8Array(byteNumbers);
 
-    return byteArray;
+    // Extract salt and the encrypted content
+    const salt = encryptedData.slice(8, 16);
+    const ciphertext = encryptedData.slice(16);
+
+    // Derive key and IV
+    const { key, iv } = await derive_key_and_iv(password, salt);
+
+    // Decrypt the ciphertext
+    const decrypted = await crypto.subtle.decrypt(
+        {
+            name: "AES-CBC",
+            iv: iv
+        },
+        key,
+        ciphertext
+    );
+
+    return new Uint8Array(decrypted);
 }
 
 function open_pdf(byteArray) {
-    // Create a blob and open the PDF in a new tab
     const blob = new Blob([byteArray], { type: 'application/pdf' });
     const blobUrl = URL.createObjectURL(blob);
     window.open(blobUrl, '_blank');
+    console.log(`PDF decrypted and opened : \n ${blobUrl}`);
 }
 
 function pdf_link(path) {
-    console.log(path)
     fetch(path)
-        .then(response => response.blob())
-        .then(blob => {
-            const reader = new FileReader();
-            reader.onload = () => {
-                try {
-                    open_pdf(to_byte_array(decrypt_pdf(
-                        reader.result,
-                        prompt('Enter Password'))));
-                } catch (e) {
-                    alert('Invalid password or corrupted document.');
-                }
-            };
-            reader.readAsText(blob);
+        .then(response => response.text())
+        .then(b64 => decrypt_b64(b64, prompt('Enter Password')))
+        .then(doc => open_pdf(doc))
+        .catch(e => {
+            alert('Invalid password or corrupted document.');
         });
 }
