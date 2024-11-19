@@ -18,7 +18,7 @@
                             // TODO: Handle better
                             if (href.endsWith('.csv.enc')) {
                                 console.log(doc);
-                                open_asset(doc, { type: 'text/raw' });
+                                open_asset(doc, { type: 'text/plain;charset=utf-8' });
                             } else
                                 open_asset(doc, { type: 'application/pdf' });
                         })
