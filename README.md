@@ -2,10 +2,12 @@
 
 ---
 
+
 ## Ateliers Électronique
 
 [Capteurs de lumière](./docs/Détecteur_de_lumière/laboratoire.enc)
 
+<br/>
 
 ## Ateliers Arduino
 
@@ -19,8 +21,13 @@
 
 ## Exercices Arduino
 
-[Intro aux Servomoteurs (fr)](./docs/intro_servo/laboratoire_fr.enc) | 
-[Intro to Servo motors (en)](./docs/intro_servo/laboratoire_en.enc) 
+[Entrée Analogue (fr)](./docs/potentiometre/laboratoire_fr.enc) | 
+[Analog Input (en)](./docs/potentiometre/laboratoire_en.enc)
+
+[Servomoteurs (fr)](./docs/intro_servo/laboratoire_fr.enc) | 
+[Servo motors (en)](./docs/intro_servo/laboratoire_en.enc) 
+
+
 
 <br/>
 

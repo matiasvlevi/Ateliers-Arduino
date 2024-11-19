@@ -68,19 +68,15 @@ async function decrypt_b64(base64Data, password) {
     return new Uint8Array(decrypted);
 }
 
-function open_pdf(byteArray) {
-    const blob = new Blob([byteArray], { type: 'application/pdf' });
+function open_asset(byteArray, options) {
+    const blob = new Blob([byteArray], options);
     const blobUrl = URL.createObjectURL(blob);
     window.open(blobUrl, '_blank');
     console.log(`PDF decrypted and opened : \n ${blobUrl}`);
 }
 
-function pdf_link(path) {
-    fetch(path)
+async function enc_link(path) {
+    return fetch(path)
         .then(response => response.text())
-        .then(b64 => decrypt_b64(b64, prompt('Enter Password')))
-        .then(doc => open_pdf(doc))
-        .catch(e => {
-            alert('Invalid password or corrupted document.');
-        });
+        .then(b64 => decrypt_b64(b64, prompt('Enter Password')));
 }
