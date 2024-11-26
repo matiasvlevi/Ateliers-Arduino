@@ -3,6 +3,6 @@ _site
 .vscode
 
 # Hide document keys
-*.key.sh
-**/*.pdf
-**/admin.csv
+docs/**/*.key.sh
+docs/**/*.pdf
+docs/**/*.csv

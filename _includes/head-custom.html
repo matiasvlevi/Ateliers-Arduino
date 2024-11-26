@@ -8,28 +8,7 @@
 <script src="{{ '/assets/js/decrypt-pdf.js' | relative_url }}"></script>
 <script>
     window.onload = function () {
-        document.querySelectorAll('a').forEach(link => {
-            const href = link.href;
-            if (href.endsWith('.enc')) {
-                link.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    enc_link(href)
-                        .then(doc => {
-                            // TODO: Handle better
-                            if (href.endsWith('.csv.enc')) {
-                                console.log(doc);
-                                open_asset(doc, { type: 'text/plain;charset=utf-8' });
-                            } else
-                                open_asset(doc, { type: 'application/pdf' });
-                        })
-                        .catch(e => {
-                            alert('Invalid password or corrupted document.');
-                        });
-                });
-            }
-        });
+        document.querySelectorAll('a').forEach(apply_decrypt_middleware);
     }
 </script>
-<title> Ateliers </title>
-
 <!-- end custom head snippets -->
