@@ -37,4 +37,10 @@
 <br/>
 
 
+## Autres
+
+### Modèles STL
+
+[Rover Chassis](./assets/models/rover_chassis.stl)
+
 <br/> 
