@@ -2,6 +2,9 @@
 
 ---
 
+<p align="center">
+    <img src="./assets/qrcode.png" width="450px"></img>
+</p>
 
 ## Ateliers Électronique
 
