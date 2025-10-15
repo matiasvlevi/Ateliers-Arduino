@@ -4,5 +4,5 @@ _site
 
 # Hide document keys
 docs/**/*.key.sh
-docs/**/*.pdf
+#docs/**/*.pdf
 docs/**/*.csv
