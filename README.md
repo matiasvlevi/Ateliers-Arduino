@@ -3,7 +3,7 @@
 ---
 
 <p align="center">
-    <img src="./assets/qrcode.png" width="450px"></img>
+    <img src="./assets/qrcode.png" width="300px"/>
 </p>
 
 ## Ateliers Électronique
