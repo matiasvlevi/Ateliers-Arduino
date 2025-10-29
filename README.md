@@ -15,7 +15,7 @@
 ## Ateliers Arduino
 
 [Clavier à Notes](./docs/clavier_a_notes/laboratoire.pdf) | 
-[Solution](./docs/clavier_musical/solution.pdf)
+[Solution](./docs/clavier_a_notes/solution.pdf)
 
 [Entrée de Stationnement](./docs/Entrée_de_stationnement/laboratoire.pdf) |
 [Solution](./docs/Entrée_de_stationnement/solution.pdf) |
