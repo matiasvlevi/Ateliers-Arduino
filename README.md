@@ -49,3 +49,33 @@
 [Rover Chassis](./assets/models/rover_chassis.stl)
 
 <br/> 
+
+
+
+```scad
+module base(x, y) {
+        linear_extrude(10)
+        hull() {
+                circle(r);
+
+                translate([0, x])
+                circle(r);
+
+                translate([y, x])
+                circle(r);
+
+                translate([y, 0])
+                circle(r);
+        }
+}
+
+module cell(x, y) {
+        difference() {
+                base(x, y);
+
+                translate([0, 0, 1])
+                cube([y, x, 10]);
+        }
+}
+
+```
